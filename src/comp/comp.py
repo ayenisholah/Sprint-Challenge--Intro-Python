@@ -30,7 +30,7 @@ humans = [
 print("Starts with D:")
 
 a = [name.name for name in humans if name.name.startswith('D')]
-
+x = [name for name in humans]
 print(a)
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
@@ -41,12 +41,13 @@ print(b)
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 # print("Starts between C and G, inclusive:")
-c = [name.name for name in humans if name.name.startswith(('C', 'D', 'E', 'F', 'G'))]
+c = [name.name for name in humans if name.name.startswith(
+    ('C', 'D', 'E', 'F', 'G'))]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
 # print("Ages plus 10:")
-d = [(name.age + 10 )for name in humans]
+d = [(name.age + 10)for name in humans]
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
@@ -66,14 +67,14 @@ print(f)
 # Write a list comprehension that creates a list of new Humans like the old
 # list, except with all the names uppercase and the ages with 5 added to them.
 # The "humans" list should be unmodified.
-# print("All names uppercase:")
+print("All names uppercase:")
 # [Human("ALICE", 34), Human("BOB", 37), Human("CHARLIE", 42), Human("DAPHNE", 35), Human("EVE", 31)
 
-g = [(name.name.upper(), (name.age + 5)) for name in humans]
+g = [Human(name.name.upper(), (name.age + 5)) for name in humans]
 print(g)
 
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
-h = [(name.age**0.5) for name in humans]
+h= [(name.age**0.5) for name in humans]
 print(h)

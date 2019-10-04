@@ -5,10 +5,13 @@ import csv
 
 
 class City:
-    def __init__(self, name, lat, lon):
+    def __init__(self, name, lat, lng):
         self.name = name
         self.lat = lat
-        self.lon = lon
+        self.lng = lng
+
+    def __str__(self):
+        return f'{self.name}, {self.lat}, {self.lng}'
 
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -27,22 +30,21 @@ class City:
 cities = []
 
 
-import csv
-cities = []
-
-
 def cityreader(cities=[]):
     # TODO Implement the functionality to read from the 'cities.csv' file
     # For each city record, create a new City instance and add it to the
     # `cities` list
 
-    with open('./cities.csv') as file:
-        reader = csv.DictReader(file)
-        cities = [(city['city'], city['lat'], city['lng']) for city in reader]
-    print(cities)
+    with open('cities.csv', newline='') as file:
+        reader = csv.DictReader(file, delimiter=',')
+        for city in reader:
+            cities.append((City(city['city'], city['lat'], city['lng'])))
+        return (cities)
 
 cityreader(cities)
 
+for c in cities:
+    print(c)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 
